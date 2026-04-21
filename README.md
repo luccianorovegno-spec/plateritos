@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Plateritos Headless (Next.js + Tienda Nube)
 
-## Getting Started
+Base headless para la nueva web de Plateritos con enfoque:
 
-First, run the development server:
+- Premium accesible
+- Fondo blanco + pasteles
+- Estilo colorido creativo
+- Prioridad escolar/oficina
+- Checkout final en Tienda Nube
+
+## Estructura
+
+- Home: Hero, mundos, productos destacados, contacto.
+- Producto: galeria, precio, stock, descripcion, boton de compra en Tienda Nube.
+- Integracion: `src/lib/tiendanube.ts` consume API de Tienda Nube y cae en datos demo si faltan credenciales.
+
+## Configuracion
+
+1. Copiar variables:
+
+```bash
+cp .env.example .env.local
+```
+
+2. Completar:
+
+- `TIENDANUBE_STORE_ID`
+- `TIENDANUBE_ACCESS_TOKEN`
+- `TIENDANUBE_STORE_URL` (ej: `https://platerito.com.ar`)
+- `TIENDANUBE_USER_AGENT` (requerido por API)
+
+## Desarrollo
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build y lint
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+## Notas Tienda Nube
 
-To learn more about Next.js, take a look at the following resources:
+- Endpoints usados: `GET /products`.
+- Headers obligatorios: `Authentication: bearer ...` y `User-Agent`.
+- Base URL: `https://api.tiendanube.com/v1/{store_id}`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Referencia oficial:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- https://tiendanube.github.io/api-documentation/v1/intro
+- https://tiendanube.github.io/api-documentation/resources/product

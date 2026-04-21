@@ -2,25 +2,122 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #25273a;
+  --surface: #ffffff;
+  --ink-soft: #6d7388;
+  --line: #ececf1;
+  --primary: #ff6b6b;
+  --primary-dark: #f65656;
+  --pastel-coral: #ffe5e3;
+  --pastel-pink: #ffe8ef;
+  --pastel-lavender: #f1ebff;
+  --pastel-mint: #e6faee;
+  --pastel-yellow: #fff5d9;
+  --pastel-blue: #e5f3ff;
+  --soft-gray: #fafafc;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-body);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-body), sans-serif;
+}
+
+.container-shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-shell {
+    padding-inline: 1.5rem;
+  }
+}
+
+.soft-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+.content-max-width {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .content-max-width {
+    padding-inline: 1.5rem;
+  }
+}
+
+.section-padding {
+  padding-block: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-block: 5rem;
+  }
+}
+
+.bg-pastel-coral {
+  background: var(--pastel-coral);
+}
+.bg-pastel-pink {
+  background: var(--pastel-pink);
+}
+.bg-pastel-lavender {
+  background: var(--pastel-lavender);
+}
+.bg-pastel-mint {
+  background: var(--pastel-mint);
+}
+.bg-pastel-yellow {
+  background: var(--pastel-yellow);
+}
+.bg-pastel-blue {
+  background: var(--pastel-blue);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.45s ease-out both;
 }
