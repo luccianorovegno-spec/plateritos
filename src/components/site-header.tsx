@@ -47,6 +47,13 @@ const quickLinks = [
   { href: "/contacto", label: "Contacto" },
 ];
 
+const topBannerItems = [
+  "ENVIOS GRATIS DESDE $ 200.000",
+  "REGISTRATE EN EL NEWSLETTER Y OBTIENE UN 20% EN LA PRIMER COMPRA",
+  "ENCUENTRA TU TIENDA CERCA",
+  "HASTA 6 CUOTAS SIN INTERES",
+];
+
 export function SiteHeader({ categories: _categories = [], cartCount = 0 }: SiteHeaderProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -124,15 +131,15 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
       data-has-dynamic-categories={hasDynamicCategories}
     >
       <div className="border-b border-[var(--line)] bg-[#fff5d9]">
-        <div className="content-max-width flex min-h-9 items-center justify-between gap-3 py-1 text-xs text-[var(--ink-soft)]">
-          <p>Envio gratis superando $200.000</p>
-          <p className="hidden sm:block">3 cuotas sin interes con Visa o Master</p>
-          <Link
-            href="/localizador-de-tienda"
-            className="hidden font-semibold text-[var(--foreground)] underline-offset-2 hover:underline lg:block"
-          >
-            Localizador de tienda
-          </Link>
+        <div className="w-full overflow-hidden py-1">
+          <div className="flex min-h-7 w-max animate-[top-banner-marquee_20s_linear_infinite] items-center gap-3 px-4 text-xs whitespace-nowrap text-[var(--ink-soft)] md:px-6">
+            {[...topBannerItems, ...topBannerItems].map((item, idx) => (
+              <span key={`${item}-${idx}`} className="inline-flex items-center">
+                <span>{item}</span>
+                <span className="mx-3 text-[var(--foreground)]">-</span>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -361,6 +368,16 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
       ) : null}
 
       {typeof window !== "undefined" && cartOpen ? createPortal(cartDrawer, document.body) : null}
+      <style jsx>{`
+        @keyframes top-banner-marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </header>
   );
 }
