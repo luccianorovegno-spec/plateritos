@@ -53,6 +53,7 @@ function WhatsAppIcon() {
 const quickLinks = [
   { href: "/", label: "Inicio" },
   { href: "/productos", label: "Productos" },
+  { href: "/productos?destacado=novedades", label: "Destacados" },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -61,6 +62,24 @@ const topBannerItems = [
   "REGISTRATE EN EL NEWSLETTER Y OBTIENE UN 20% EN LA PRIMER COMPRA",
   "ENCUENTRA TU TIENDA CERCA",
   "HASTA 6 CUOTAS SIN INTERES",
+];
+
+const featuredHighlights = [
+  {
+    title: "NOVEDADES",
+    href: "/productos?destacado=novedades",
+    image: "/images/collection-regalos.jpg",
+  },
+  {
+    title: "MAS VENDIDOS",
+    href: "/productos?destacado=mas-vendidos",
+    image: "/images/collection-escolar.jpg",
+  },
+  {
+    title: "OPORTUNIDADES",
+    href: "/productos?destacado=oportunidades",
+    image: "/images/promo-vueltaalcole.jpg",
+  },
 ];
 
 type CategoryIconKind =
@@ -372,6 +391,44 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
                     <p className="text-sm text-[var(--ink-soft)]">Selecciona esta categoria para ver todos sus productos.</p>
                   )}
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="group relative">
+            <Link
+              href="/productos?destacado=novedades"
+              className="inline-flex items-center gap-1 text-[var(--foreground)] transition hover:text-[var(--primary)]"
+            >
+              Destacados
+              <svg viewBox="0 0 20 20" className="h-4 w-4" fill="currentColor">
+                <path d="M5.5 7.5 10 12l4.5-4.5" />
+              </svg>
+            </Link>
+
+            <div className="invisible absolute top-full left-0 z-40 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100">
+              <div className="grid min-w-[860px] grid-cols-3 gap-4 rounded-2xl border border-[var(--line)] bg-white p-4 shadow-xl">
+                {featuredHighlights.map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="group/card block overflow-hidden rounded-2xl border border-[var(--line)] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  >
+                    <div className="relative h-[170px] overflow-hidden">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-full w-full object-cover transition duration-500 group-hover/card:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="px-4 py-3">
+                      <p className="text-sm font-bold tracking-wide text-[var(--foreground)]">
+                        {item.title}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
