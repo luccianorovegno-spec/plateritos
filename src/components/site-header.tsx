@@ -54,6 +54,7 @@ const quickLinks = [
   { href: "/", label: "Inicio" },
   { href: "/productos", label: "Productos" },
   { href: "/productos?destacado=novedades", label: "Destacados" },
+  { href: "/productos?regalos=recomendados", label: "Ideas de Regalos" },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -79,6 +80,33 @@ const featuredHighlights = [
     title: "OPORTUNIDADES",
     href: "/productos?destacado=oportunidades",
     image: "/images/promo-vueltaalcole.jpg",
+  },
+];
+
+const giftIdeasMenu = [
+  {
+    title: "¿PARA QUE OCASIÓN?",
+    items: [
+      { label: "Cumpleaños", href: "/productos?regalos=ocasion-cumpleanos" },
+      { label: "Aniversario", href: "/productos?regalos=ocasion-aniversario" },
+      { label: "Graduación", href: "/productos?regalos=ocasion-graduacion" },
+      { label: "Vuelta al cole", href: "/productos?regalos=ocasion-vuelta-al-cole" },
+      { label: "Amigo invisible", href: "/productos?regalos=ocasion-amigo-invisible" },
+    ],
+  },
+  {
+    title: "HOBBIES Y PASIONES",
+    items: [
+      { label: "Fútbol", href: "/productos?regalos=hobby-futbol" },
+      { label: "Basketball", href: "/productos?regalos=hobby-basketball" },
+      { label: "Arte y dibujo", href: "/productos?regalos=hobby-arte" },
+      { label: "Lectura", href: "/productos?regalos=hobby-lectura" },
+      { label: "Viajes", href: "/productos?regalos=hobby-viajes" },
+    ],
+  },
+  {
+    title: "RECOMENDADOS",
+    items: [{ label: "Ver recomendados", href: "/productos?regalos=recomendados" }],
   },
 ];
 
@@ -428,6 +456,41 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
                       </p>
                     </div>
                   </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="group relative">
+            <Link
+              href="/productos?regalos=recomendados"
+              className="inline-flex items-center gap-1 text-[var(--foreground)] transition hover:text-[var(--primary)]"
+            >
+              Ideas de Regalos
+              <svg viewBox="0 0 20 20" className="h-4 w-4" fill="currentColor">
+                <path d="M5.5 7.5 10 12l4.5-4.5" />
+              </svg>
+            </Link>
+
+            <div className="invisible absolute top-full left-0 z-40 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100">
+              <div className="grid min-w-[860px] grid-cols-3 gap-4 rounded-2xl border border-[var(--line)] bg-white p-5 shadow-xl">
+                {giftIdeasMenu.map((section) => (
+                  <div key={section.title} className="rounded-2xl bg-[var(--soft-gray)] p-4">
+                    <p className="mb-3 text-xs font-bold tracking-wide text-[var(--ink-soft)]">
+                      {section.title}
+                    </p>
+                    <div className="space-y-1.5">
+                      {section.items.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          className="block rounded-lg px-2 py-1.5 text-sm text-[var(--foreground)] transition hover:bg-white"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
