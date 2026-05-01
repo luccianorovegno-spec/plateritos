@@ -63,6 +63,91 @@ const topBannerItems = [
   "HASTA 6 CUOTAS SIN INTERES",
 ];
 
+type CategoryIconKind =
+  | "paint"
+  | "pouch"
+  | "notebook"
+  | "folder"
+  | "school"
+  | "colors"
+  | "pen"
+  | "marker"
+  | "backpack"
+  | "sticky"
+  | "glue"
+  | "paper"
+  | "scissors"
+  | "bundle"
+  | "calc"
+  | "calendar"
+  | "puzzle"
+  | "book";
+
+const categoryIconBySlug: Record<string, CategoryIconKind> = {
+  "acuarela-temperas-masas": "paint",
+  cartucheras: "pouch",
+  cuadernos: "notebook",
+  "carpetas-escolares": "folder",
+  "elementos-escolares": "school",
+  "lapices-de-colores": "colors",
+  "lapices-negros-y-portaminas": "pen",
+  "lapiceras-y-resaltadores": "pen",
+  marcadores: "marker",
+  "mochilas-luncheras": "backpack",
+  "notas-adhesivas": "sticky",
+  "pegamentos-y-cintas-adhesivas": "glue",
+  "repuestos-de-hojas-escolares": "paper",
+  "tijeras-y-cutter": "scissors",
+  papeleria: "paper",
+  "kit-escolares": "bundle",
+  calculadoras: "calc",
+  "calendarios-y-planificadores": "calendar",
+  rompecabezas: "puzzle",
+  "libros-para-colorear": "book",
+};
+
+function CategoryIcon({ kind }: { kind: CategoryIconKind }) {
+  switch (kind) {
+    case "paint":
+      return <span aria-hidden="true">🎨</span>;
+    case "pouch":
+      return <span aria-hidden="true">👝</span>;
+    case "folder":
+      return <span aria-hidden="true">📁</span>;
+    case "school":
+      return <span aria-hidden="true">📐</span>;
+    case "colors":
+      return <span aria-hidden="true">🖍️</span>;
+    case "pen":
+      return <span aria-hidden="true">✏️</span>;
+    case "marker":
+      return <span aria-hidden="true">🖊️</span>;
+    case "backpack":
+      return <span aria-hidden="true">🎒</span>;
+    case "sticky":
+      return <span aria-hidden="true">🗒️</span>;
+    case "glue":
+      return <span aria-hidden="true">🧴</span>;
+    case "paper":
+      return <span aria-hidden="true">📄</span>;
+    case "scissors":
+      return <span aria-hidden="true">✂️</span>;
+    case "bundle":
+      return <span aria-hidden="true">🧰</span>;
+    case "calc":
+      return <span aria-hidden="true">🧮</span>;
+    case "calendar":
+      return <span aria-hidden="true">🗓️</span>;
+    case "puzzle":
+      return <span aria-hidden="true">🧩</span>;
+    case "book":
+      return <span aria-hidden="true">📚</span>;
+    case "notebook":
+    default:
+      return <span aria-hidden="true">📓</span>;
+  }
+}
+
 export function SiteHeader({ categories: _categories = [], cartCount = 0 }: SiteHeaderProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -252,13 +337,16 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
                       key={item.slug}
                       href={`/productos?categoria=${encodeURIComponent(item.slug)}`}
                       onMouseEnter={() => setActiveCategorySlug(item.slug)}
-                      className={`rounded-xl px-3 py-2 text-sm font-medium transition ${
+                      className={`flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition ${
                         activeCategorySlug === item.slug
                           ? "bg-pastel-coral text-[var(--foreground)]"
                           : "text-[var(--foreground)] hover:bg-[var(--soft-gray)]"
                       }`}
                     >
-                      {item.label}
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/70 text-[13px]">
+                        <CategoryIcon kind={categoryIconBySlug[item.slug] || "notebook"} />
+                      </span>
+                      <span>{item.label}</span>
                     </Link>
                   ))}
                 </div>
