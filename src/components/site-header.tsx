@@ -132,7 +132,10 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
     >
       <div className="border-b border-[var(--line)] bg-[#fff5d9]">
         <div className="w-full overflow-hidden py-1">
-          <div className="flex min-h-7 w-max animate-[top-banner-marquee_20s_linear_infinite] items-center gap-3 px-4 text-xs whitespace-nowrap text-[var(--ink-soft)] md:px-6">
+          <div
+            className="flex min-h-7 w-max items-center gap-3 px-4 text-xs whitespace-nowrap text-[var(--ink-soft)] md:px-6"
+            style={{ animation: "top-banner-marquee 20s linear infinite" }}
+          >
             {[...topBannerItems, ...topBannerItems].map((item, idx) => (
               <span key={`${item}-${idx}`} className="inline-flex items-center">
                 <span>{item}</span>
@@ -368,7 +371,7 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
       ) : null}
 
       {typeof window !== "undefined" && cartOpen ? createPortal(cartDrawer, document.body) : null}
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes top-banner-marquee {
           0% {
             transform: translateX(0);
