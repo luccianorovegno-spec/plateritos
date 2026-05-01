@@ -41,6 +41,15 @@ function BagIcon() {
   );
 }
 
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 16 16" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+      <path d="M13.601 2.326A7.854 7.854 0 0 0 8.008 0C3.626 0 .05 3.576.05 7.958c0 1.401.366 2.77 1.062 3.977L0 16l4.151-1.089a7.953 7.953 0 0 0 3.854.981h.003c4.382 0 7.958-3.576 7.958-7.958a7.93 7.93 0 0 0-2.365-5.608ZM8.008 14.55a6.61 6.61 0 0 1-3.37-.92l-.242-.145-2.463.646.657-2.401-.157-.248A6.607 6.607 0 0 1 1.41 7.958a6.602 6.602 0 0 1 6.598-6.598 6.58 6.58 0 0 1 4.672 1.934 6.57 6.57 0 0 1 1.94 4.664c-.004 3.636-2.97 6.592-6.612 6.592Z" />
+      <path d="M11.615 9.75c-.197-.1-1.17-.578-1.353-.644-.182-.066-.315-.1-.447.1-.132.197-.512.644-.628.776-.116.132-.231.149-.428.05-.197-.1-.83-.306-1.58-.975-.584-.52-.978-1.164-1.093-1.36-.116-.198-.012-.305.087-.404.09-.089.198-.232.296-.347.1-.116.132-.198.198-.33.066-.132.033-.248-.017-.347-.05-.1-.446-1.074-.61-1.47-.161-.387-.324-.334-.446-.34l-.38-.007a.727.727 0 0 0-.528.248c-.182.198-.694.678-.694 1.652 0 .975.71 1.916.809 2.049.099.132 1.393 2.128 3.376 2.984.472.204.84.325 1.127.416.474.151.906.13 1.247.079.38-.057 1.17-.478 1.336-.941.165-.462.165-.858.115-.941-.05-.083-.182-.132-.38-.231Z" />
+    </svg>
+  );
+}
+
 const quickLinks = [
   { href: "/", label: "Inicio" },
   { href: "/productos", label: "Productos" },
@@ -151,10 +160,10 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
           <Image
             src="/logo-platerito.webp"
             alt="Platerito"
-            width={220}
-            height={61}
+            width={280}
+            height={78}
             priority
-            className="h-10 w-auto md:h-11"
+            className="h-12 w-auto md:h-14"
           />
         </Link>
 
@@ -166,23 +175,16 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
             <input
               type="search"
               name="q"
-              placeholder="Buscar cuadernos, agendas, mochilas..."
-              className="w-full rounded-full border border-[var(--line)] bg-[var(--soft-gray)] py-3 pr-4 pl-12 text-sm outline-none transition focus:border-[var(--primary)]"
+              placeholder="¿Que estas buscando?"
+              className="w-full rounded-full border border-[#e53935] bg-[var(--soft-gray)] py-3 pr-4 pl-12 text-sm outline-none transition focus:border-[#d32f2f]"
             />
           </label>
         </form>
 
         <div className="hidden items-center gap-1 text-[var(--foreground)] md:flex">
           <Link
-            href="/busqueda"
-            aria-label="Busqueda"
-            className="rounded-full p-2.5 transition hover:bg-[var(--soft-gray)]"
-          >
-            <SearchIcon />
-          </Link>
-          <Link
             href="/perfil"
-            aria-label="Perfil"
+            aria-label="Registro"
             className="rounded-full p-2.5 transition hover:bg-[var(--soft-gray)]"
           >
             <UserIcon />
@@ -198,6 +200,15 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
               {cartCount}
             </span>
           </button>
+          <Link
+            href="https://wa.me/542995050045"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="rounded-full p-2.5 text-[#25D366] transition hover:bg-[var(--soft-gray)]"
+          >
+            <WhatsAppIcon />
+          </Link>
         </div>
 
         <button
