@@ -55,6 +55,7 @@ const quickLinks = [
   { href: "/productos", label: "Productos" },
   { href: "/productos?destacado=novedades", label: "Destacados" },
   { href: "/productos?regalos=recomendados", label: "Ideas de Regalos" },
+  { href: "/empresa", label: "Empresa" },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -108,6 +109,12 @@ const giftIdeasMenu = [
     title: "RECOMENDADOS",
     items: [{ label: "Ver recomendados", href: "/productos?regalos=recomendados" }],
   },
+];
+
+const companyMenu = [
+  { title: "Nosotros", href: "/empresa#nosotros" },
+  { title: "Trabaja en Plateritos", href: "/empresa#trabaja-con-nosotros" },
+  { title: "Comentarios y Sugerencias", href: "/contacto#comentarios-sugerencias" },
 ];
 
 type CategoryIconKind =
@@ -492,6 +499,34 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="group relative">
+            <Link
+              href="/empresa"
+              className="inline-flex items-center gap-1 text-[var(--foreground)] transition hover:text-[var(--primary)]"
+            >
+              Empresa
+              <svg viewBox="0 0 20 20" className="h-4 w-4" fill="currentColor">
+                <path d="M5.5 7.5 10 12l4.5-4.5" />
+              </svg>
+            </Link>
+
+            <div className="invisible absolute top-full left-0 z-40 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100">
+              <div className="min-w-[340px] rounded-2xl border border-[var(--line)] bg-white p-4 shadow-xl">
+                <div className="space-y-1.5">
+                  {companyMenu.map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className="block rounded-lg px-3 py-2 text-sm font-medium text-[var(--foreground)] transition hover:bg-[var(--soft-gray)]"
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
