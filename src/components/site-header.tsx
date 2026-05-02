@@ -117,6 +117,51 @@ const companyMenu = [
   { title: "Comentarios y Sugerencias", href: "/contacto#comentarios-sugerencias" },
 ];
 
+const exploreRibbonItems = [
+  {
+    title: "Papeleria Bonita",
+    href: "/productos?tema=papeleria-bonita",
+    icon: "📝",
+    bg: "bg-[#f6dbe6]",
+  },
+  {
+    title: "Arte Creativo",
+    href: "/productos?tema=arte-creativo",
+    icon: "🎨",
+    bg: "bg-[#dce8ff]",
+  },
+  {
+    title: "Tiempo Libre e Hidratacion",
+    href: "/productos?tema=tiempo-libre-hidratacion",
+    icon: "🧃",
+    bg: "bg-[#d8f3e1]",
+  },
+  {
+    title: "Pinto y Dibujo",
+    href: "/productos?tema=pinto-y-dibujo",
+    icon: "🖌️",
+    bg: "bg-[#ffe6cf]",
+  },
+  {
+    title: "Puzzles y Juegos",
+    href: "/productos?tema=puzzles-y-juegos",
+    icon: "🧩",
+    bg: "bg-[#e7defa]",
+  },
+  {
+    title: "Lapiceras para Regalo",
+    href: "/productos?tema=lapiceras-para-regalo",
+    icon: "🖊️",
+    bg: "bg-[#dbeafc]",
+  },
+  {
+    title: "Chucerias",
+    href: "/productos?tema=chucerias",
+    icon: "🍬",
+    bg: "bg-[#ffdce2]",
+  },
+];
+
 type CategoryIconKind =
   | "paint"
   | "pouch"
@@ -275,10 +320,11 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-[var(--line)] bg-white/95 backdrop-blur-md"
+      className="border-b border-[var(--line)] bg-white"
       data-has-dynamic-categories={hasDynamicCategories}
     >
-      <div className="border-b border-[var(--line)] bg-[#fff5d9]">
+      <div className="sticky top-0 z-50 border-b border-[var(--line)] bg-white/95 backdrop-blur-md">
+        <div className="border-b border-[var(--line)] bg-[#fff5d9]">
         <div className="w-full overflow-hidden py-1">
           <div
             className="flex min-h-7 w-max items-center gap-3 px-4 text-xs whitespace-nowrap text-[var(--ink-soft)] md:px-6"
@@ -292,9 +338,9 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
             ))}
           </div>
         </div>
-      </div>
+        </div>
 
-      <div className="content-max-width grid grid-cols-[auto_1fr_auto] items-center gap-3 py-3 md:gap-6">
+        <div className="content-max-width grid grid-cols-[auto_1fr_auto] items-center gap-3 py-3 md:gap-6">
         <Link href="/" className="flex-shrink-0">
           <Image
             src="/logo-platerito.webp"
@@ -357,9 +403,9 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
         >
           Menu
         </button>
-      </div>
+        </div>
 
-      <div className="hidden border-t border-[var(--line)] md:block">
+        <div className="hidden border-t border-[var(--line)] md:block">
         <div className="content-max-width flex items-center gap-8 py-3 text-[15px] font-semibold">
           <Link
             href="/"
@@ -540,89 +586,113 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
             Contacto
           </Link>
         </div>
-      </div>
+        </div>
 
-      {mobileOpen ? (
-        <div className="border-t border-[var(--line)] bg-white md:hidden">
-          <div className="content-max-width space-y-4 py-4">
-            <form action="/busqueda">
-              <label className="relative block">
-                <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-[var(--ink-soft)]">
-                  <SearchIcon />
-                </span>
-                <input
-                  type="search"
-                  name="q"
-                  placeholder="Buscar productos..."
-                  className="w-full rounded-full border border-[var(--line)] bg-[var(--soft-gray)] py-3 pr-4 pl-12 text-sm outline-none"
-                />
-              </label>
-            </form>
+        {mobileOpen ? (
+          <div className="border-t border-[var(--line)] bg-white md:hidden">
+            <div className="content-max-width space-y-4 py-4">
+              <form action="/busqueda">
+                <label className="relative block">
+                  <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-[var(--ink-soft)]">
+                    <SearchIcon />
+                  </span>
+                  <input
+                    type="search"
+                    name="q"
+                    placeholder="Buscar productos..."
+                    className="w-full rounded-full border border-[var(--line)] bg-[var(--soft-gray)] py-3 pr-4 pl-12 text-sm outline-none"
+                  />
+                </label>
+              </form>
 
-            <div className="space-y-1">
-              {quickLinks.map((item) => (
+              <div className="space-y-1">
+                {quickLinks.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="block rounded-lg px-2 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--soft-gray)]"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
                 <Link
-                  key={item.href}
-                  href={item.href}
+                  href="/perfil"
                   onClick={() => setMobileOpen(false)}
                   className="block rounded-lg px-2 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--soft-gray)]"
                 >
-                  {item.label}
+                  Perfil
                 </Link>
-              ))}
-              <Link
-                href="/perfil"
-                onClick={() => setMobileOpen(false)}
-                className="block rounded-lg px-2 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--soft-gray)]"
-              >
-                Perfil
-              </Link>
-              <button
-                type="button"
-                onClick={() => {
-                  setCartOpen(true);
-                  setMobileOpen(false);
-                }}
-                className="block w-full rounded-lg px-2 py-2 text-left text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--soft-gray)]"
-              >
-                Carrito
-              </button>
-            </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCartOpen(true);
+                    setMobileOpen(false);
+                  }}
+                  className="block w-full rounded-lg px-2 py-2 text-left text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--soft-gray)]"
+                >
+                  Carrito
+                </button>
+              </div>
 
-            <div>
-              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[var(--ink-soft)]">Categorias</p>
-              <div className="space-y-2">
-                {catalogMenu.map((item) => (
-                  <details key={item.slug} className="rounded-lg bg-[var(--soft-gray)]">
-                    <summary className="cursor-pointer list-none px-3 py-2 text-xs font-semibold text-[var(--foreground)]">
-                      {item.label}
-                    </summary>
-                    <div className="space-y-1 px-3 pb-3">
-                      <Link
-                        href={`/productos?categoria=${encodeURIComponent(item.slug)}`}
-                        onClick={() => setMobileOpen(false)}
-                        className="block rounded-md bg-white px-2 py-1.5 text-xs text-[var(--foreground)]"
-                      >
-                        Ver todo
-                      </Link>
-                      {item.children?.map((child) => (
+              <div>
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[var(--ink-soft)]">Categorias</p>
+                <div className="space-y-2">
+                  {catalogMenu.map((item) => (
+                    <details key={item.slug} className="rounded-lg bg-[var(--soft-gray)]">
+                      <summary className="cursor-pointer list-none px-3 py-2 text-xs font-semibold text-[var(--foreground)]">
+                        {item.label}
+                      </summary>
+                      <div className="space-y-1 px-3 pb-3">
                         <Link
-                          key={child.slug}
-                          href={`/productos?categoria=${encodeURIComponent(item.slug)}&subcategoria=${encodeURIComponent(child.slug)}`}
+                          href={`/productos?categoria=${encodeURIComponent(item.slug)}`}
                           onClick={() => setMobileOpen(false)}
                           className="block rounded-md bg-white px-2 py-1.5 text-xs text-[var(--foreground)]"
                         >
-                          {child.label}
+                          Ver todo
                         </Link>
-                      ))}
-                    </div>
-                  </details>
-                ))}
+                        {item.children?.map((child) => (
+                          <Link
+                            key={child.slug}
+                            href={`/productos?categoria=${encodeURIComponent(item.slug)}&subcategoria=${encodeURIComponent(child.slug)}`}
+                            onClick={() => setMobileOpen(false)}
+                            className="block rounded-md bg-white px-2 py-1.5 text-xs text-[var(--foreground)]"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </details>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
+        ) : null}
+      </div>
+
+      <div className="hidden border-t border-[var(--line)] bg-white md:block">
+        <div className="content-max-width py-4">
+          <div className="grid grid-cols-7 gap-2">
+            {exploreRibbonItems.map((item) => (
+              <Link
+                key={item.title}
+                href={item.href}
+                className="group flex flex-col items-center gap-2 rounded-2xl px-2 py-2 text-center transition hover:bg-[var(--soft-gray)]"
+              >
+                <span
+                  className={`inline-flex h-16 w-16 items-center justify-center rounded-full text-3xl transition group-hover:-translate-y-0.5 ${item.bg}`}
+                >
+                  {item.icon}
+                </span>
+                <span className="text-sm leading-tight font-medium text-[var(--foreground)]">
+                  {item.title}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
-      ) : null}
+      </div>
 
       {typeof window !== "undefined" && cartOpen ? createPortal(cartDrawer, document.body) : null}
       <style jsx global>{`
