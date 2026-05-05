@@ -3,7 +3,7 @@ import { SectionHeading } from "@/components/section-heading";
 const collections = [
   {
     id: "1",
-    title: "OFICINA",
+    title: "Oficina",
     image: "/images/collection-oficina.jpg",
     description: "Tu espacio de trabajo ideal",
     color: "bg-pastel-blue",
@@ -11,7 +11,7 @@ const collections = [
   },
   {
     id: "2",
-    title: "ESCOLAR",
+    title: "Escolar",
     image: "/images/collection-escolar.jpg",
     description: "Todo para la vuelta al cole",
     color: "bg-pastel-yellow",
@@ -19,7 +19,7 @@ const collections = [
   },
   {
     id: "3",
-    title: "PAPELERIA BONITA",
+    title: "Papeleria Bonita",
     image: "/images/collection-agendas.jpg",
     description: "Organiza tu año con estilo",
     color: "bg-pastel-pink",
@@ -27,7 +27,7 @@ const collections = [
   },
   {
     id: "4",
-    title: "ARTE y DIBUJO",
+    title: "Arte y Dibujo",
     image: "/images/collection-arte.jpg",
     description: "Libera tu creatividad",
     color: "bg-pastel-mint",
@@ -35,7 +35,7 @@ const collections = [
   },
   {
     id: "5",
-    title: "ESTUDIOS",
+    title: "Estudios",
     image: "/images/collection-cuadernos.jpg",
     description: "Para tus ideas y suenos",
     color: "bg-pastel-lavender",
@@ -43,7 +43,7 @@ const collections = [
   },
   {
     id: "6",
-    title: "PRODUCTOS PARA CREAR",
+    title: "Productos para Crear",
     image: "/images/collection-regalos.jpg",
     description: "Detalles que enamoran",
     color: "bg-pastel-coral",

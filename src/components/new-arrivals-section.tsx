@@ -24,7 +24,10 @@ export function NewArrivalsSection({ products }: NewArrivalsSectionProps) {
   const filtered = (() => {
     switch (activeTab) {
       case "novedades":
-        return products.slice(0, 4);
+        return products.slice(0, 4).map((p, i) => ({
+          ...p,
+          images: [`/images/product-${i + 1}.jpg`],
+        }));
       case "mas-vendidos": {
         const sorted = [...products].sort(
           (a, b) => (b.stock ?? 0) - (a.stock ?? 0),
