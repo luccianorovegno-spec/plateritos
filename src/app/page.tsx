@@ -2,7 +2,10 @@ import { AboutTeaser } from "@/components/about-teaser";
 import { BrandsCarousel } from "@/components/brands-carousel";
 import { CollectionsGrid } from "@/components/collections-grid";
 import { FeaturesBar } from "@/components/features-bar";
+import { GoogleReviewsSection } from "@/components/google-reviews";
 import { HeroCarousel } from "@/components/hero-carousel";
+import { NewArrivalsSection } from "@/components/new-arrivals-section";
+import { TrendingSection } from "@/components/trending-section";
 import { NewsletterSection } from "@/components/newsletter-section";
 import { ProductCard } from "@/components/product-card";
 import { PromoSection } from "@/components/promo-section";
@@ -26,6 +29,8 @@ export default async function Home() {
       <main className="flex-1">
         <HeroCarousel />
         <FeaturesBar />
+        <NewArrivalsSection products={products} />
+        <TrendingSection />
         <CollectionsGrid />
         <BrandsCarousel />
 
@@ -45,6 +50,7 @@ export default async function Home() {
 
         <PromoSection />
         <AboutTeaser />
+        <GoogleReviewsSection />
         <NewsletterSection />
       </main>
 

@@ -22,13 +22,15 @@ export function BrandsCarousel() {
         <div className="animate-marquee flex hover:[animation-play-state:paused]">
           {loop.map((logo, index) => (
             <div key={`${logo}-${index}`} className="mx-4 flex-shrink-0 md:mx-6">
-              <div className="flex h-28 w-44 items-center justify-center rounded-2xl border border-[var(--line)] bg-white px-4 py-3 shadow-sm">
-                <img
-                  src={logo}
-                  alt={`Marca ${((index % brandLogos.length) + 1).toString()}`}
-                  className="h-full w-full object-contain"
-                  loading="lazy"
-                />
+              <div className="flex h-32 w-32 items-center justify-center rounded-2xl border border-[var(--line)] bg-white p-3 shadow-sm md:h-36 md:w-36">
+                <div className="h-full w-full overflow-hidden rounded-full">
+                  <img
+                    src={logo}
+                    alt={`Marca ${((index % brandLogos.length) + 1).toString()}`}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           ))}

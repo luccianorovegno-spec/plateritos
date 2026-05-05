@@ -19,7 +19,7 @@ export function AboutTeaser() {
           </div>
           <div>
             <span className="text-sm font-semibold uppercase tracking-wider text-[var(--primary)]">
-              Nuestra historia
+              Empresa
             </span>
             <h2 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               Somos Plateritos, tu libreria de confianza

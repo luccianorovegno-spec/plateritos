@@ -695,16 +695,6 @@ export function SiteHeader({ categories: _categories = [], cartCount = 0 }: Site
       </div>
 
       {typeof window !== "undefined" && cartOpen ? createPortal(cartDrawer, document.body) : null}
-      <style jsx global>{`
-        @keyframes top-banner-marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-      `}</style>
     </header>
   );
 }

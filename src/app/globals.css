@@ -121,3 +121,12 @@ h3 {
 .animate-fade-in {
   animation: fadeIn 0.45s ease-out both;
 }
+
+@keyframes top-banner-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
